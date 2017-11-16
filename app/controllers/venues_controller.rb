@@ -5,10 +5,26 @@ end
 
 def create
 #render plain: params[:venue]
+#validation
+  @venue = Venue.new(venue_params)
+    if @venue.save
+
+    #do validations
+    flash[:notice] = "Venue was successfully created..."
+    redirect_to venue_path(@venue)
+    else
+      flash[:notice] = "Venue creation failed..."
+    #render new template again
+    render 'new'
+    end
 #create new instance varibale , pass the params and save it
-@venue = Venue.new(venue_params)
-@venue.save
-redirect_to venues_show(@venue)
+#
+#@venue.save
+
+end
+
+def show
+  @venue = Venue.find(params[:id])
 end
   #define private method to safely pass the params
   private

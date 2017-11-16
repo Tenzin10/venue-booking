@@ -1,5 +1,12 @@
 <h1>CREATE NEW VENUE</h1>
-
+<% if @venue.errors.any? %>
+<h2>Following errors prevented venue from creation</h2>
+  <ul>
+    <% @venue.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <%end %>
+  </ul>
+<%end %>
 <%= form_for @venue do |f| %>
   <p>
     <%= f.label :title %></br>
