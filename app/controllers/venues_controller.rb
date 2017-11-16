@@ -1,10 +1,12 @@
 class VenuesController < ApplicationController
+before_action :set_venue, only: [:edit, :update, :show, :destroy]
+
 def new
 @venue = Venue.new
 end
 
 def edit
-  @venue = Venue.find(params[:id])
+
 end
 
 def index
@@ -12,7 +14,6 @@ def index
 end
 
 def update
-  @venue = Venue.find(params[:id])
   if @venue.update(venue_params)
       flash[:notice] = "Successfully updated..."
       redirect_to venue_path(@venue)
@@ -42,11 +43,11 @@ def create
 end
 
 def show
-  @venue = Venue.find(params[:id])
+
 end
 
 def destroy
-  @venue = Venue.find(params[:id])
+
   @venue.destroy
   flash[:notice] = "Venue Successfully Deleted..."
   redirect_to venues_path
@@ -57,4 +58,7 @@ end
         params.require(:venue).permit(:title, :place)
     end
 
+  def set_venue
+    @venue = Venue.find(params[:id])
+  end
 end #end of class
