@@ -1,0 +1,15 @@
+<h1>CREATE NEW VENUE</h1>
+
+<%= form_for @venue do |f| %>
+  <p>
+    <%= f.label :title %></br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :place %></br>
+    <%= f.text_area :place %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
