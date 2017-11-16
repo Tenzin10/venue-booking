@@ -44,6 +44,13 @@ end
 def show
   @venue = Venue.find(params[:id])
 end
+
+def destroy
+  @venue = Venue.find(params[:id])
+  @venue.destroy
+  flash[:notice] = "Venue Successfully Deleted..."
+  redirect_to venues_path
+end
   #define private method to safely pass the params
   private
     def venue_params
