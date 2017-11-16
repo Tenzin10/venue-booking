@@ -1,4 +1,6 @@
 <h1>Showing article</h1>
 
  <p>Title : <%= @venue.title %> </P>
-   <p>Place :<%= @venue.place %> </p> 
+   <p>Place :<%= @venue.place %> </p>
+   <%= link_to "Back to venue listing", venues_path %> |
+   <%= link_to "Edit", edit_venue_path(@venue) %>

@@ -3,6 +3,24 @@ def new
 @venue = Venue.new
 end
 
+def edit
+  @venue = Venue.find(params[:id])
+end
+
+def index
+  @venues = Venue.all
+end
+
+def update
+  @venue = Venue.find(params[:id])
+  if @venue.update(venue_params)
+      flash[:notice] = "Successfully updated..."
+      redirect_to venue_path(@venue)
+    else
+      render 'edit'
+  end
+end
+
 def create
 #render plain: params[:venue]
 #validation

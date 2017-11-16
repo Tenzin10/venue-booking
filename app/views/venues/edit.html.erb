@@ -1,6 +1,6 @@
-<h1>CREATE NEW VENUE</h1>
+<h1>Edit existing article </h1>
 <% if @venue.errors.any? %>
-<h2>Following errors prevented venue from creation</h2>
+<h2>Following errors prevented venue from editing</h2>
   <ul>
     <% @venue.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -20,5 +20,4 @@
     <%= f.submit %>
   </p>
 <% end %>
-
 <%= link_to "Back to venue listing", venues_path %>
