@@ -13,8 +13,5 @@
  *= require devise_bootstrap_views
  *= require_tree .
  *= require_self
- .navbar-default{
-  color: #FF0000;
-  }
-
+ * custom.css.scss
  */
