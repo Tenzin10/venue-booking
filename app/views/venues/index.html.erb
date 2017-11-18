@@ -3,6 +3,7 @@
 <%= link_to "Create new venue", new_venue_path %>
 </p>
 <% @venues.each do |venue| %>
+<!-- only venue admin can see their own venues -->
  <% if user_signed_in? && current_user == venue.user && current_user.venue_admin?%>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
