@@ -1,6 +1,7 @@
 class VenuesController < ApplicationController
 before_action :set_venue, only: [:edit, :update, :show, :destroy]
-
+before_action :require_venue_admin, only: [:edit, :update, :show, :destroy,:new, :index]
+before_action :require_same_venue_admin, only: [:edit, :update, :show, :destroy,]
 def new
 @venue = Venue.new
 end
@@ -26,7 +27,7 @@ def create
 #render plain: params[:venue]
 #validation
   @venue = Venue.new(venue_params)
-  @venue.user = User.first
+  @venue.user = current_user
     if @venue.save
 
     #do validations
@@ -61,5 +62,17 @@ end
 
   def set_venue
     @venue = Venue.find(params[:id])
+  end
+  def require_venue_admin
+    if !current_user.venue_admin?
+      flash[:danger] = "Access denied"
+      redirect_to root_path
+    end
+  end
+ def require_same_venue_admin
+    if current_user != @venue.user
+      flash[:danger] = "Access denied"
+      redirect_to root_path
+    end
   end
 end #end of class

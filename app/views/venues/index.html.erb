@@ -3,6 +3,7 @@
 <%= link_to "Create new venue", new_venue_path %>
 </p>
 <% @venues.each do |venue| %>
+ <% if user_signed_in? && current_user == venue.user && current_user.venue_admin?%>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <div class="well well-lg">
@@ -13,17 +14,19 @@
          <%= truncate(venue.place, lenght:50) %>
           <div>
             <small>
+            Created at
+                <%= time_ago_in_words(venue.created_at) %> ago,
               Last updated at: <%= time_ago_in_words(venue.updated_at) %> ago. 
             </small>
           </div>
       </div>
-      <%#if((user_signed_in?) && (current_user == venue.user)) %>
+     
       <div class="venue-actions">
         <%= link_to "Edit", edit_venue_path(venue) %>
         <%= link_to "Show", venue_path(venue) %> 
         <%= link_to "Delete", venue_path(venue), method: :delete, data: {confirm: "Are you sure ?" }  %> 
       </div> 
-    <%#end %>
+    <%end %>
     </div>
   </div>
 </div> 
