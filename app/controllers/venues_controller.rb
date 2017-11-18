@@ -34,7 +34,7 @@ def create
     flash[:notice] = "Venue was successfully created..."
     redirect_to venue_path(@venue)
     else
-      flash[:notice] = "Venue creation failed..."
+      flash[:danger] = "Venue creation failed..."
     #render new template again
     render 'new'
     end
@@ -51,13 +51,13 @@ end
 def destroy
 
   @venue.destroy
-  flash[:notice] = "Venue Successfully Deleted..."
+  flash[:danger] = "Venue Successfully Deleted..."
   redirect_to venues_path
 end
   #define private method to safely pass the params
   private
     def venue_params
-        params.require(:venue).permit(:title, :place)
+        params.require(:venue).permit(:title, :place,:street_address, :landmark,:contact_number)
     end
 
   def set_venue
