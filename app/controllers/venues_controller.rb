@@ -26,6 +26,7 @@ def create
 #render plain: params[:venue]
 #validation
   @venue = Venue.new(venue_params)
+  @venue.user = User.first
     if @venue.save
 
     #do validations

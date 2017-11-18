@@ -18,7 +18,12 @@
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>-->
     <ul class="nav navbar-nav navbar-right">
-    <li><%= link_to("Logout", destroy_user_session_path, class: 'btn btn-md btn-danger', method: :delete) %></li>
+    <% if user_signed_in? %>
+    <li><%= link_to("Logout", destroy_user_session_path, method: :delete)%></li>
+    <% else %>
+        <li><%= link_to "Log in", new_session_path(resource_name)%></li>
+        <li><%= link_to "Sign up", new_registration_path(resource_name) %></li>
+    <% end %>
     </ul>
     </div>
   </div>
