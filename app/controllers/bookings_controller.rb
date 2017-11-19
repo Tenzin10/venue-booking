@@ -12,6 +12,10 @@ class BookingsController < ApplicationController
 		
 	end
 
+	def book
+		
+	end
+
 
 	private
 		#admin cannot book venues

@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   root 'welcome#index'
   #routes for venues
   resources :venues
-  resources :bookings
+  resources :bookings, except:[:create]
 end
