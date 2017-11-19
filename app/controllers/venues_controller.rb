@@ -26,6 +26,7 @@ end
 def create
 #render plain: params[:venue]
 #validation
+#debugger
   @venue = Venue.new(venue_params)
   @venue.user = current_user
     if @venue.save
@@ -57,7 +58,7 @@ end
   #define private method to safely pass the params
   private
     def venue_params
-        params.require(:venue).permit(:title, :place,:street_address, :landmark,:contact_number)
+        params.require(:venue).permit(:title, :place,:street_address, :landmark,:contact_number,:from,:to,:days)
     end
 
   def set_venue
