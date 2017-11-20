@@ -13,4 +13,9 @@ class Venue < ActiveRecord::Base
       validates :to, presence:true
       validates :days, presence:true
   validates :user_id, presence: true 
+
+
+ # def self.find_venue_by_id(venue_id)
+  #  where(venue_id: venue_id).first
+ # end
 end

@@ -1,10 +1,32 @@
-<h1>THIS IS HOME PAGE OF USER</h1>
-<div class="jumbotron">
-  <h1 class="display-3">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
-</div>
+<h1 align="center">LIsting all venue </h1>
+<% @venue_found.each do |venue| %>
+<%#= @venue_found.inspect %>
+<!-- only venue admin can see their own venue_found -->
+ <% if user_signed_in?%>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <div class="well well-lg">
+      <div>
+          <%= link_to venue.title, welcome_path(venue) %>
+      </div>
+      <div>
+         <%= truncate(venue.place, lenght:50) %>
+          <div>
+            <small>
+            Created at
+                <%= time_ago_in_words(venue.created_at) %> ago,
+              Last updated at: <%= time_ago_in_words(venue.updated_at) %> ago. 
+            </small>
+          </div>
+      </div>
+     
+      <div class="venue-actions">
+        <%= link_to "book", booking_path(venue) %> 
+         <%= link_to "Show", welcome_path(venue) %> 
+      </div> 
+    <%end %>
+    </div>
+  </div>
+</div> 
+<% end %>
+
