@@ -8,11 +8,12 @@
     <%= link_to "Venue Bookings", root_path, class: "navbar-brand" %>  
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-      <% if user_signed_in? && current_user.venue_admin %>
+      <% if user_signed_in? && current_user.venue_admin? %>
         <li><%= link_to "Your Venues", venues_path %></li>
-        <%else %>
+        <% end %>
+        <% if user_signed_in? && !current_user.venue_admin? %>
         <li><%= link_to "Your Bookings", bookings_path %></li>
-        <%end %>
+        <%end %>          
         <li><%= link_to "Link2", "/path2"  %></li>
         <li><%= link_to "Link3", "/path3"  %></li>
       </ul>
