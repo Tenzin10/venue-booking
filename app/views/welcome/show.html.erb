@@ -7,9 +7,11 @@
   <li class="list-group-item list-group-item-secondary"><strong>contact number:</strong> <%=@venue_detail.contact_number%></li>
 </ul>
 </div>
+<div id="venue-availability"></div>
    
   		
-  	<%= form_tag check_availability_path, remote: true, method: :get, id: 'availanility_checker', class: 'form-horizontal col-md-10' do %>
+  	<%= form_tag check_availability_path, remote: true, method: :get, id: 'venue-availability-form', class: 'form-horizontal col-md-10' do %>
+  		<%= hidden_field(:venue, params[:venue]) %>
   		 <div class="col-md-3"> 
           <%= label_tag :from %>
           <%= select_tag(:from,options_for_select(['9:00AM','10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
@@ -20,7 +22,7 @@
         </div>
         <div class="col-md-3 ">
         <%= label_tag :On %> 
-        <%= date_field_tag 'name' %>
+        <%= date_field_tag 'days' %>
         </div>
  	  	<div class=" col-md-1">
               
