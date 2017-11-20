@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #route for home page
   root 'welcome#index'
+
+ get 'home', to: 'welcome#home'
   #routes for venues
   resources :venues
   resources :bookings, except:[:create]

@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-		#before_action :only_reguler_user
+		before_action :only_reguler_user
 	def index
 		
 	end

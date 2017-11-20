@@ -5,11 +5,13 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">VenueBooking</a>
+    <%= link_to "Venue Bookings", root_path, class: "navbar-brand" %>  
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
       <% if user_signed_in? && current_user.venue_admin %>
         <li><%= link_to "Your Venues", venues_path %></li>
+        <%else %>
+        <li><%= link_to "Your Bookings", bookings_path %></li>
         <%end %>
         <li><%= link_to "Link2", "/path2"  %></li>
         <li><%= link_to "Link3", "/path3"  %></li>
