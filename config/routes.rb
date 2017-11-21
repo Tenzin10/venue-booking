@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   #route for home page
   resources :welcome ,except:[:destroy, :update,:create]
   resources :venues
-  resources :bookings, except:[:create]
- 
+  
   root 'welcome#index'
   get 'home', to: 'welcome#home'
  get "check", to: "welcome#check"  
