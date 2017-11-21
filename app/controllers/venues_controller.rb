@@ -2,6 +2,7 @@ class VenuesController < ApplicationController
 before_action :set_venue, only: [:edit, :update, :show, :destroy]
 before_action :require_venue_admin, only: [:edit, :update, :show, :destroy,:new, :index]
 before_action :require_same_venue_admin, only: [:edit, :update, :show, :destroy,]
+
 def new
 @venue = Venue.new
 end

@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
     if @venue_found
      #render 'new'
     else
-     render status: :not_found, nothing: true
+     render status: :not_found, head: true
       end
   end
        # displays venue detail
@@ -20,19 +20,44 @@ class WelcomeController < ApplicationController
         end
   end
 
-  def check_availability
+  def check
+      if params[:venue_detail]
+      @venue = Venue.find(params[:venue_detail])
+      end
+      if @venue
+      #render json: @venue
+      render partial: 'check'
+    else
+      render status: :not_found, nothing: true
+    end
+  end
+
+  def new
     if params[:venue]
-      @venue = Venue.find(params[:venue])
+      @venue = user.Venue.find(params[:venue])
       @venue ||= venue.new_from_lookup(params[:venue])      
     end
 
     if @venue
-      #render json: @venue
-      render partial: 'lookup'
+      render json: @venue
+      render 'check'
     else
       render status: :not_found, nothing: true
     end
     end
+    def edit
+      
+    end
+
+    def update
+      if @article.update(article_params)
+      flash[:success] = "Article was successfully updated"
+      redirect_to article_path(@article)
+    else
+      render 'edit'
+    end      
+    end
+
 
 
 end

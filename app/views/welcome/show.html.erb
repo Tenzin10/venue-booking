@@ -1,5 +1,5 @@
-	<div class="col-md-12">
-	<ul class="list-group col-md-5 col-off-set-2">
+<div class="col-md-12">
+  <ul class="list-group col-md-5 col-off-set-2">
   <li class="list-group-item alert alert-success"><strong>Name:</strong>  <%= @venue_detail.title %></li>
   <li class="list-group-item list-group-item-secondary"> <strong>City/town:</strong> <%=@venue_detail.place%></li>
   <li class="list-group-item list-group-item-secondary"><strong>Landmark:</strong>  <%=@venue_detail.landmark%></li>
@@ -7,29 +7,24 @@
   <li class="list-group-item list-group-item-secondary"><strong>contact number:</strong> <%=@venue_detail.contact_number%></li>
 </ul>
 </div>
-<div id="venue-availability"></div>
-   
-  		
-  	<%= form_tag check_availability_path, remote: true, method: :get, id: 'venue-availability-form', class: 'form-horizontal col-md-10' do %>
-  		<%= hidden_field(:venue, params[:venue]) %>
-  		 <div class="col-md-3"> 
-          <%= label_tag :from %>
-          <%= select_tag(:from,options_for_select(['9:00AM','10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
-        </div>
-         <div class="col-md-3"> 
-          <%= label_tag :to %>
-          <%= select_tag(:to,options_for_select(['',"9:00AM",'10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
-        </div>
-        <div class="col-md-3 ">
-        <%= label_tag :On %> 
-        <%= date_field_tag 'days' %>
-        </div>
- 	  	<div class=" col-md-1">
-              
-                <%= submit_tag "check", class: "btn btn-primary btn-sm"%>
-              
-          </div>
 
-         <% end -%>
+   </hr>
+   <%=render'common/spinner' %>
+  <%= form_tag check_path, method: :get, id: 'venue-availability-form' do %>
+    <div class="form-group row no-padding text-center col-md-12">
+      <div class="col-md-10">
+      <%= hidden_field_tag :venue_detail, @venue_detail.id %>
+      </div>
+      <div class="col-md-2">
+      <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+        <span class=""> Check availability</span>
+      <%end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div id="venue-availability">
+</div>
+  
 
-  	
+    
