@@ -1,0 +1,28 @@
+<% if  @venue %>
+    <div id="venue_availability-results" class="well results-block">
+      <strong>From:</strong><%= @venue.from %>
+      <strong>To:</strong><%= @venue.to %>
+      <strong>days:</strong><%= @venue.days %>
+    </div>
+
+    <% if current_user.can_book_venue?(@venue) %>
+				<%= link_to "Book this venue", bookings_path(user: current_user, venue_id: @venue.id, venue_id: @venue.id ? @venue.id : ''), class: 'btn btn-success btn-xs', method: :post	 %>
+				<% else %>
+					<span class="label label-default">
+						venue cannot be booked because you have already booked
+						<% if !current_user.under_limit? %>
+							3 venues
+						<%end %>
+						<% if current_user.venue_already_added?(@venue.id) %>
+							 this venue
+						<%end %>
+
+					</span>
+
+				<% end %>
+
+    <div id="venue-lookup-errors">
+      
+    </div>
+  <% end %>
+</div>
