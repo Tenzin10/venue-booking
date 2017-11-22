@@ -10,11 +10,13 @@
       <ul class="nav navbar-nav">
       <% if user_signed_in? && current_user.venue_admin? %>
         <li><%= link_to "Your Venues", venues_path %></li>
+        <li><%#= link_to "User requests", venue_booking_requests_path  %>
         <% end %>
         <% if user_signed_in? && !current_user.venue_admin? %>
         <li><%= link_to "Your Bookings", bookings_path %></li>
-        <%end %>          
-        <li><%= link_to "Link2", "/path2"  %></li>
+                  
+        </li>
+        <%end %>
         <li><%= link_to "Link3", "/path3"  %></li>
       </ul>
       <!--

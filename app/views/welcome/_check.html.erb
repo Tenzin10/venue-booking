@@ -2,20 +2,21 @@
     <div id="venue_availability-results" class="well results-block">
       <strong>From:</strong><%= @venue.from %>
       <strong>To:</strong><%= @venue.to %>
-
+      <strong>On:</strong><%= params[:name] %>
     </div>
 
-    <% if current_user.can_book_venue?(@venue) %>
-				<%= link_to "Book this venue", bookings_path(user: current_user, venue_id: @venue.id, venue_id: @venue.id ? @venue.id : ''), class: 'btn btn-success btn-xs', method: :post	 %>
+    <% if current_user.can_send_request?(@venue) %>
+    			-------------------------------
+				<%= link_to  "send request to book this venue",new_booking_path(user: current_user, venue_id: @venue.id,from:@venue.from,to:@venue.to, on: params[:name]), class: 'btn btn-success btn-xs', method: :post, action: :create%>
 				<% else %>
 					<span class="label label-default">
-						venue cannot be booked because you have already booked
+						request cannot be send because you have already sent
 						<% if !current_user.under_limit? %>
-							3 venues
+							3 requests
 						<%end %>
-						<% if current_user.venue_already_booked?(@venue.id) %>
+						<% if current_user.request_already_sent?(@venue.id) %>
 
-							 this venue
+							 request
 						<%end %>
 
 					</span>

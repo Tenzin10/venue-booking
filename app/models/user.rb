@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :venues
   has_many :bookings
  has_many :booked_venues, through: :bookings, source: :venue
+ 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,15 +15,15 @@ class User < ApplicationRecord
          	"Anonymous"
          end
 
-         def can_book_venue?(venue_details)
-          under_limit? && !venue_already_booked?(venue_details)
+         def can_send_request?(venue_details)
+          under_limit? && !request_already_sent?(venue_details)
          end
 
          def under_limit?
           (bookings.count <=3)
          end
 
-         def venue_already_booked?(venue_details)
+         def request_already_sent?(venue_details)
           venue = Venue.find(venue_details)
           return false unless venue
           bookings.where(venue_id: venue.id).exists?   

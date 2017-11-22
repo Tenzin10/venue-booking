@@ -1,5 +1,44 @@
 <h1>New Booking</h1>
 
-<%= render 'form', booking: @booking %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end -%>
+    <div class="">
+        <div class="col-md-6">
+         
+          <%= params['from']%>
+        </div> 
+          
+          <div class="col-md-6">
+         
+          <%= params['to']%>
+        </div> 
+         <div class="col-md-6"> 
+      
+       <%= params['name'] %>
+      </div>
+
+     <%= form_for(@booking,  :html => {class: "form-horizontal", role: "form"}) do |f|  %>
+     <%= f.hidden_field_tag :to, params['to'] %>
+     <%= f.hidden_field_tag :from, params['from'] %>
+     <%= f.hidden_field_tag :venue_id, params['venue_id'] %>
+     <%= f.hidden_field_tag :user_id, params['user'] %>
+     <%= f.hidden_field_tag :on, params['on'] %>
+      
+  	<div class="">
+    <%= f.submit %>
+  	</div>
+	<% end %>
+
+
+  
 
 <%= link_to 'Back', bookings_path %>

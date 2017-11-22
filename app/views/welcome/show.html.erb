@@ -10,7 +10,7 @@
 
    </hr>
    <%=render'common/spinner' %>
-  <%= form_tag check_path,method: :get, id: 'venue-availability-form' do %>
+  <%= form_tag check_path,method: :post, id: 'venue-availability-form' do %>
     <div class="form-group row no-padding text-center col-md-12">
       <div class="col-md-10">
       <%= hidden_field_tag :venue_detail, @venue_detail.id %>
