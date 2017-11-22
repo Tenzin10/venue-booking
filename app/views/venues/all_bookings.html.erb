@@ -1,5 +1,5 @@
 
-<h1> Your Bookings</h1>
+<h1> All Bookings</h1>
 <table border="1px">
   <thead>
     <tr>
@@ -33,9 +33,7 @@
           <%else %>
           <td>Booking Confirmed</td>
          <% end %>
-        <td><%= link_to 'Show', booking %></td>
-        <td><%= link_to 'update', edit_booking_path(booking) %></td>
-        <td><%= link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Cancel request', cancel_request_path(booking), data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -43,4 +41,4 @@
 
 <br>
 
-<%#= link_to 'New Booking', new_booking_path %>
+<%#= link_to 'BACK', root_path %>

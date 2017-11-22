@@ -50,6 +50,33 @@ def show
 
 end
 
+def approve_requests
+   @booking = Booking.find(params['format'])
+   if @booking
+    @booking.update_attribute(:request,true)
+    # @booking.save
+  end  
+end
+
+def user_request
+
+  @bookings = Booking.where(request: false)
+end
+
+def cancel_request
+
+  @booking = Booking.find(params['format'])
+   if @booking
+    @booking.update_attribute(:request,false)
+    # @booking.save
+  end  
+
+end
+
+def all_bookings
+  @bookings = Booking.all
+end
+
 def destroy
 
   @venue.destroy
@@ -77,4 +104,6 @@ end
       redirect_to root_path
     end
   end
+
+
 end #end of class

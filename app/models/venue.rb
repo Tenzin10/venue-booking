@@ -14,8 +14,11 @@ class Venue < ActiveRecord::Base
       validates :from_date, presence:true
       validates :till_date, presence:true
   validates :user_id, presence: true 
-  
+    def set_status
+      self.request = true
+  end
 
+      
 
  # def self.find_venue_by_id(venue_id)
   #  where(venue_id: venue_id).first

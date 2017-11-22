@@ -29,5 +29,15 @@ class User < ApplicationRecord
           bookings.where(venue_id: venue.id).exists?   
          end
 
+         def user_request?(venue_booking)
+        booking = Booking.find(venue_booking)
+          return false unless booking
+          bookings.where(request: true).exists? 
+        end
+
+      def toggle_request!
+    update request: !request
+  end
+
          
 end

@@ -7,4 +7,7 @@ class Booking < ApplicationRecord
       validates :user_id, presence: true
       validates :venue_id, presence:true
 
+     
+      
+
 end

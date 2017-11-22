@@ -1,5 +1,7 @@
-
-<h1> Your Bookings</h1>
+<% if  @bookings.count==0 %>
+  <h2>NO requests</h2>
+<% else %>
+<h1> Bookings request</h1>
 <table border="1px">
   <thead>
     <tr>
@@ -33,14 +35,13 @@
           <%else %>
           <td>Booking Confirmed</td>
          <% end %>
-        <td><%= link_to 'Show', booking %></td>
-        <td><%= link_to 'update', edit_booking_path(booking) %></td>
-        <td><%= link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Approve', approve_requests_path(booking) %>
+        <td><%= link_to 'Cancel Booking', cancel_request_path, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%#= link_to 'New Booking', new_booking_path %>
+<% end -%>
+<%#= link_to 'BACK', root_path %>
