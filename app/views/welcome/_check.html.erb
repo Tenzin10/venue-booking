@@ -6,7 +6,7 @@
     </div>
 
     <% if current_user.can_send_request?(@venue) %>
-    			-------------------------------
+    			<h3>Its available, follow the link and send request</h3>
 				<%= link_to  "send request to book this venue",new_booking_path(user: current_user, venue_id: @venue.id,from:@venue.from,to:@venue.to, on: params[:name]), class: 'btn btn-success btn-xs', method: :post, action: :create%>
 				<% else %>
 					<span class="label label-default">
