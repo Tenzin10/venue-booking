@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
+  resources :bookings, except: [:new]
 					#for user registration this line takes controller to given path	first.
   devise_for :users, :controllers => { :registrations => "user/registrations" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #route for home page
   resources :welcome ,except:[:destroy, :update,:create]
   resources :venues
+<<<<<<< HEAD
   resources :bookings, except:[:create]
  
+=======
+  
+>>>>>>> test
   root 'welcome#index'
   get 'home', to: 'welcome#home'
  get "check", to: "welcome#check"  

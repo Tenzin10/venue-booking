@@ -1,0 +1,40 @@
+<div class="col-md-5">
+  <ul class="list-group col-md-5 col-off-set-2">
+  <li class="list-group-item alert alert-success"><strong>Name:</strong>  <%= @booking.venue.title %></li>
+  <li class="list-group-item list-group-item-secondary"> <strong>City/town:</strong> <%=@booking.venue.place%></li>
+  <li class="list-group-item list-group-item-secondary"><strong>Landmark:</strong>  <%=@booking.venue.landmark%></li>
+  <li class="list-group-item list-group-item-secondary"><strong>  street address:</strong> <%=@booking.venue.street_address%></li>
+  <li class="list-group-item list-group-item-secondary"><strong>contact number:</strong> <%=@booking.venue.contact_number%></li>
+</ul>
+</div>
+
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end -%>
+    <%= form_for(@booking, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class="form-group">
+        <div class="col-md-3"> 
+          <%= f.label :from %>
+          <%= f.select(:from,options_for_select(['','9:00AM','10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
+        </div>
+         <div class="col-md-3"> 
+          <%= f.label :to %>
+          <%= f.select(:to,options_for_select(['',"9:00AM",'10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
+          
+        </div>
+       <%= f.date_select(:on) %>
+      </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

@@ -10,11 +10,30 @@
 
    </hr>
    <%=render'common/spinner' %>
+<<<<<<< HEAD
   <%= form_tag check_path, method: :get, id: 'venue-availability-form' do %>
+=======
+  <%= form_tag check_path,method: :get, id: 'venue-availability-form' do %>
+>>>>>>> test
     <div class="form-group row no-padding text-center col-md-12">
       <div class="col-md-10">
       <%= hidden_field_tag :venue_detail, @venue_detail.id %>
       </div>
+<<<<<<< HEAD
+=======
+      <div class="col-md-3"> 
+          <%= label_tag :from %>
+          <%= select_tag(:from,options_for_select(['9:00AM','10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
+        </div>
+         <div class="col-md-3"> 
+          <%= label_tag :to %>
+          <%= select_tag(:to,options_for_select(['',"9:00AM",'10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
+        </div>
+        <div class="col-md-3">
+          
+        <%=  date_field_tag 'name' %> 
+        </div>
+>>>>>>> test
       <div class="col-md-2">
       <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
         <span class=""> Check availability</span>
