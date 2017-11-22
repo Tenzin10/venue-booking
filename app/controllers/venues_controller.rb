@@ -59,7 +59,7 @@ end
   #define private method to safely pass the params
   private
     def venue_params
-        params.require(:venue).permit(:title, :place,:street_address, :landmark,:contact_number,:from,:to,:days)
+        params.require(:venue).permit(:title, :place,:street_address, :landmark,:contact_number,:from,:to,:from_date,:till_date)
     end
 
   def set_venue

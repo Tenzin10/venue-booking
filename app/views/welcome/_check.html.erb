@@ -2,7 +2,7 @@
     <div id="venue_availability-results" class="well results-block">
       <strong>From:</strong><%= @venue.from %>
       <strong>To:</strong><%= @venue.to %>
-      <strong>days:</strong><%= @venue.days %>
+      
     </div>
 
     <% if current_user.can_book_venue?(@venue) %>
@@ -13,7 +13,7 @@
 						<% if !current_user.under_limit? %>
 							3 venues
 						<%end %>
-						<% if current_user.venue_already_added?(@venue.id) %>
+						<% if current_user.venue_already_booked?(@venue.id) %>
 							 this venue
 						<%end %>
 

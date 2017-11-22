@@ -1,0 +1,38 @@
+
+
+<h3 align="center">Name : <%= @booking.venue.title %></h3>
+	<div>
+		<h4 align="center">Place :<%= @booking.venue.place %> </h4>	
+
+	</div>
+	<div>
+		<h4 align="center">Street Address :<%= @booking.venue.street_address %> </h4>	
+
+	</div>
+	<div>
+		<h4 align="center">Landmark :<%= @booking.venue.landmark %> </h4>	
+
+	</div>
+	<div>
+		<h4 align="center">Contact No :<%= @booking.venue.contact_number %> </h4>	
+
+	</div>
+	<div>
+		<h4 align="center">from :<%= @booking.from %> </h4>	
+
+	</div>
+		<div>
+		<h4 align="center">To :<%= @booking.to %> </h4>	
+
+	</div>
+	<div>
+		<h4 align="center">On :<%= @booking.on %> </h4>	
+
+	</div>
+
+
+   	<%= link_to "Update this booking" , edit_booking_path(@booking), class: "btn btn-xs btn-primary" %>
+			<%= link_to "Cancel this booking", booking_path(@booking), method: :delete, data: {confirm: "Are you sure you want to cancel this booking ?"}, class: "btn btn-xs btn-danger" %>
+			<%= link_to "View all bookings" ,bookings_path, class: "btn btn-xs btn-success" %>
+
+		   

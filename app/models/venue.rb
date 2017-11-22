@@ -11,7 +11,8 @@ class Venue < ActiveRecord::Base
       #debugger
       validates :from, presence: true
       validates :to, presence:true
-      validates :days, presence:true
+      validates :from_date, presence:true
+      validates :till_date, presence:true
   validates :user_id, presence: true 
   
 
