@@ -14,22 +14,24 @@ class WelcomeController < ApplicationController
   end
        # displays venue detail
   def show
-         @venue_detail = Venue.find(params[:id])
-        if @venue_detail
+         @venue = Venue.find(params[:id])
+        if @venue
           "HOLA!!"
         end
   end
 
   def check
       if params[:venue_detail]
-      @venue = Venue.find(params[:venue_detail])
+      @venue_found = Venue.find(params[:venue_detail])
+      @timings = Venue.where("from: :from",{from: params['from']})
       end
-      if @venue
+      if @timings
       #render json: @venue
       render partial: 'check'
-    else
+      
+      else
       render status: :not_found, nothing: true
-    end
+     end
   end
 
   def new
@@ -40,7 +42,7 @@ class WelcomeController < ApplicationController
 
     if @venue
       render json: @venue
-      render 'check'
+      render partial: 'lookup'
     else
       render status: :not_found, nothing: true
     end

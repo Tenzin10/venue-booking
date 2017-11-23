@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get 'home', to: 'welcome#home'
- post "check", to: "welcome#check"
+ get "check", to: "welcome#check"
  get 'approve_requests', to: "venues#approve_requests"
  get 'user_request', to: "venues#user_request"  
  get 'all_bookings', to: 'venues#all_bookings'

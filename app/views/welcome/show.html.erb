@@ -1,43 +1,37 @@
-<div class="col-md-12">
-  <ul class="list-group col-md-5 col-off-set-2">
-  <li class="list-group-item alert alert-success"><strong>Name:</strong>  <%= @venue_detail.title %></li>
-  <li class="list-group-item list-group-item-secondary"> <strong>City/town:</strong> <%=@venue_detail.place%></li>
-  <li class="list-group-item list-group-item-secondary"><strong>Landmark:</strong>  <%=@venue_detail.landmark%></li>
-  <li class="list-group-item list-group-item-secondary"><strong>  street address:</strong> <%=@venue_detail.street_address%></li>
-  <li class="list-group-item list-group-item-secondary"><strong>contact number:</strong> <%=@venue_detail.contact_number%></li>
-</ul>
-</div>
 
-   </hr>
-   <%=render'common/spinner' %>
-  <%= form_tag check_path,method: :post, id: 'venue-availability-form' do %>
-    <div class="form-group row no-padding text-center col-md-12">
-      <div class="col-md-10">
-      <%= hidden_field_tag :venue_detail, @venue_detail.id %>
+
+  
+<div class="col-md-4">
+<%= form_tag check_path,remote: :true,method: :get, id: 'venue-availability-form',class: ' form-inline' do %>
+    <div class=" row ">
+      <div class="">
+      <%= hidden_field_tag :venue_detail, @venue.id %>
       </div>
 
-      <div class="col-md-3"> 
+      <div class="col-auto"> 
           <%= label_tag :from %>
           <%= select_tag(:from,options_for_select(['9:00AM','10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
         </div>
-         <div class="col-md-3"> 
+         <div class="col-auto"> 
           <%= label_tag :to %>
-          <%= select_tag(:to,options_for_select(['',"9:00AM",'10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control') %>
+          <%= select_tag(:to,options_for_select(['',"9:00AM",'10:00AM','11:00AM', '12:00PM','1:00PM','2:00PM','3:00PM','4:00PM','5:00AM','6:00PM','7:00PM','8:00AM','9:00PM','10:00PM']), class: 'form-control select') %>
         </div>
-        <div class="col-md-3">
-          
-        <%=  date_field_tag 'name' %> 
+        <div class="col-auto" >
+           <%= label_tag :on %>
+        <%=  date_field_tag ('name')%> 
         </div>
-      <div class="col-md-2">
-      <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+      <div class="col" style="padding-top: 10px;">
+      <%= button_tag(type: :submit, class: "btn btn-md btn-success") do %>
         <span class=""> Check availability</span>
       <%end %>
       </div>
     </div>
   <% end %>
+  </div>
+  </div>
+   <hr/>
+   <%=render'common/spinner' %>
+  
   
   <div id="venue-availability">
 </div>
-  
-
-    

@@ -2,7 +2,7 @@
 <% @venue_found.each do |venue| %>
 <%#= @venue_found.inspect %>
 <!-- only venue admin can see their own venue_found -->
- <% if user_signed_in?%>
+ <% if user_signed_in? && !current_user.venue_admin?%>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <div class="well well-lg">

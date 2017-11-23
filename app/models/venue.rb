@@ -14,10 +14,19 @@ class Venue < ActiveRecord::Base
       validates :from_date, presence:true
       validates :till_date, presence:true
   validates :user_id, presence: true 
-    def set_status
-      self.request = true
-  end
+    time_array = ['8:00AM','9:00AM','10:00AM','11:00AM',
+     '12:00PM','1:00PM','2:00PM','3:00PM',
+     '4:00PM','5:00AM','6:00PM','7:00PM','8:00PM',
+      '9:00PM','10:PM','11:PM','12:00AM']
+    def  self.find_by_availabilty(details)
+      where(from: details)
+    end
 
+
+    def self.find_timing
+      where(:from)
+    end
+  
       
 
  # def self.find_venue_by_id(venue_id)

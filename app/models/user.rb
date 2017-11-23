@@ -35,9 +35,7 @@ class User < ApplicationRecord
           bookings.where(request: true).exists? 
         end
 
-      def toggle_request!
-    update request: !request
-  end
+    
 
          
 end
